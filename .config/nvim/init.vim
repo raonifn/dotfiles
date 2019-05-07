@@ -1,5 +1,8 @@
 set nocompatible              " be iMproved, required
+syntax enable
 filetype off                  " required
+set path+=**
+set wildmenu
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
@@ -15,9 +18,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
 Plugin 'skywind3000/asyncrun.vim'
-Plugin 'eslint/eslint'
+Plugin 'w0rp/ale'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'posva/vim-vue'
+Plugin 'janko-m/vim-test'
+Plugin 'neomake/neomake'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on
@@ -26,8 +32,9 @@ filetype plugin indent on
 set hlsearch
 set incsearch
 
+set updatetime=100
+
 " Theme
-syntax enable
 set t_Co=256
 colorscheme skyhawk
 set background=dark
@@ -37,6 +44,7 @@ set encoding=utf8
 set expandtab
 set tabstop=2
 set ruler
+set relativenumber
 set nu
 set statusline+=%F
 set laststatus=2
@@ -77,9 +85,33 @@ nmap <C-b> "+p
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
+" let NERDTreeMapOpenInTab='t'
 
 " Open shortcut
-map <C-n> :NERDTreeToggle<CR>
+function MyNerdToggle()
+    if @% == "" || &filetype == 'nerdtree'
+        :NERDTreeToggle
+    else
+        :NERDTreeFind
+    endif
+endfunction
+" map <F6> :NERDTreeToggle<CR>
+nnoremap <C-\> :call MyNerdToggle()<CR>
+
+" TABS
+map <C-t>k :tabr<cr>
+map <C-t>j :tabl<cr>
+map <C-t>h :tabp<cr>
+map <C-t>l :tabn<cr>
+map <C-t>1 :tabn1<cr>
+map <C-t>2 :tabn2<cr>
+map <C-t>3 :tabn3<cr>
+map <C-t>4 :tabn4<cr>
+map <C-t>5 :tabn5<cr>
+map <C-t>6 :tabn6<cr>
+map <C-t>7 :tabn7<cr>
+map <C-t>8 :tabn8<cr>
+map <C-t>t :tabnew<cr>
 
 " Reset the listchars
 set listchars=""
@@ -101,16 +133,37 @@ let g:ctrlp_custom_ignore = {
   \ }
 " Follow symbolic links
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_map = 'f<C-P>'
 
 " So react auto reload works ¯\_(ツ)_/¯
 :set backupcopy=yes
 
 " ctrlp ignore
-set wildignore+=node_modules
+set wildignore+=node_modules/**,dist/**,build/**
 
 " Trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" Tests
+let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
+let g:test#strategy = 'neomake'
+set makeprg=npm\ run\ lint\ --\ --format\ unix
+let g:neomake_open_list = 2
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+
 
 " lsc
 let g:lsc_server_commands = {'javascript': '/home/raoni/opt/javascript-typescript-langserver/lib/language-server-stdio.js'}
