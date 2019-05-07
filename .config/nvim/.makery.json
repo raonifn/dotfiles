@@ -1,0 +1,5 @@
+{
+  "lint": {"makeprg": "npm run lint -- --format unix"},
+  "test": {"makeprg": "npm test -- --reporters jest-vim-report"},
+  "tags": {"makeprg": "ctags -R src"}
+}:

@@ -112,6 +112,7 @@ map <C-t>6 :tabn6<cr>
 map <C-t>7 :tabn7<cr>
 map <C-t>8 :tabn8<cr>
 map <C-t>t :tabnew<cr>
+map <C-t>T :tabnew \| te<cr>
 
 " Reset the listchars
 set listchars=""
@@ -148,7 +149,6 @@ match ExtraWhitespace /\s\+$/
 " Tests
 let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 let g:test#strategy = 'neomake'
-set makeprg=npm\ run\ lint\ --\ --format\ unix
 let g:neomake_open_list = 2
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 nmap <silent> t<C-n> :TestNearest<CR>
