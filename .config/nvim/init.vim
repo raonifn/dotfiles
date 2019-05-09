@@ -32,7 +32,7 @@ filetype plugin indent on
 set hlsearch
 set incsearch
 
-set updatetime=100
+set updatetime=4000
 
 " Theme
 set t_Co=256
@@ -129,7 +129,7 @@ set listchars+=precedes:<
 
 " ctrlp ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/](\.git|node_modules|build|dist|target)$',
   \ 'file': '\v\.(exe|so|dll|class|war)$'
   \ }
 " Follow symbolic links
@@ -139,8 +139,8 @@ let g:ctrlp_map = 'f<C-P>'
 " So react auto reload works ¯\_(ツ)_/¯
 :set backupcopy=yes
 
-" ctrlp ignore
-set wildignore+=node_modules/**,dist/**,build/**
+" vimgrep ignore
+set wildignore+=node_modules/**,dist/**,build/**,.git/**
 
 " Trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -163,7 +163,21 @@ let g:ale_fixers = {
 
 " let g:ale_sign_error = '❌'
 " let g:ale_sign_warning = '⚠️'
-
+" Greps
+function FastGrep()
+        set ei=all
+				exec "vimgrep /" . expand("<cword>") . "/j **"
+        set ei&
+        cw
+endfunction
+function FastBoundaryGrep()
+        set ei=all
+				exec "vimgrep /\\b" . expand("<cword>") . "\\b/j **"
+        set ei&
+        cw
+endfunction
+:nnoremap <C-g>r :call FastGrep()<CR>
+:nnoremap <C-g>R :call FastBoundaryGrep()<CR>
 
 " lsc
 let g:lsc_server_commands = {'javascript': '/home/raoni/opt/javascript-typescript-langserver/lib/language-server-stdio.js'}
