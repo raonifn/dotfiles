@@ -22,6 +22,8 @@ Plugin 'posva/vim-vue'
 Plugin 'janko-m/vim-test'
 Plugin 'neomake/neomake'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'racer-rust/vim-racer'
+Plugin 'dart-lang/dart-vim-plugin'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,6 +43,7 @@ set encoding=utf8
 
 set expandtab
 set tabstop=2
+set shiftwidth=2
 set ruler
 set relativenumber
 set nu
@@ -76,7 +79,8 @@ nmap <right> :vertical resize +5<CR>
 
 " Copy/Paste
 vmap <C-c> "+y
-nmap <C-b> "+p
+nmap v<C-v> "+p
+
 
 " NERDTree
 " Autoopen
@@ -125,7 +129,7 @@ set listchars+=precedes:<
 
 " ctrlp ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules|build|dist|target)$',
+  \ 'dir':  '\v[\/](\.git|node_modules|build|dist|target|gen)$',
   \ 'file': '\v\.(exe|so|dll|class|war)$'
   \ }
 " Follow symbolic links
@@ -136,7 +140,7 @@ let g:ctrlp_map = 'f<C-P>'
 :set backupcopy=yes
 
 " vimgrep ignore
-set wildignore+=node_modules/**,dist/**,build/**,.git/**
+set wildignore+=node_modules/**,dist/**,build/**,.git/**,gen/**,target/**,tags
 
 " Trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -177,4 +181,5 @@ endfunction
 
 " lsc
 let g:lsc_server_commands = {'javascript': '/home/raoni/opt/javascript-typescript-langserver/lib/language-server-stdio.js'}
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
 let g:lsc_auto_map = v:true
