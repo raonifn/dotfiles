@@ -8,7 +8,9 @@ set wildmenu
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'Vundle'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kamykn/skyhawk'
 Plugin 'natebosch/vim-lsc'
 Plugin 'kien/ctrlp.vim'
@@ -164,20 +166,34 @@ let g:ale_fixers = {
 " let g:ale_sign_error = '❌'
 " let g:ale_sign_warning = '⚠️'
 " Greps
-function FastGrep()
+function! VisualText()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\r")
+endfunction
+function! FastGrep(what)
         set ei=all
-				exec "vimgrep /" . expand("<cword>") . "/j **"
+				exec "vimgrep /" . a:what . "/j **"
         set ei&
         cw
 endfunction
-function FastBoundaryGrep()
+function! FastBoundaryGrep()
         set ei=all
 				exec "vimgrep /\\b" . expand("<cword>") . "\\b/j **"
         set ei&
         cw
 endfunction
-:nnoremap <C-g>r :call FastGrep()<CR>
-:nnoremap <C-g>R :call FastBoundaryGrep()<CR>
+:nnoremap <C-g>r :call FastGrep(expand("<cword>"))<CR>
+:nnoremap <C-g>R :call FastBoundaryGrep(expand("<cword>"))<CR>
+:vnoremap <C-g>r :call FastGrep(VisualText())<CR>
+:vnoremap <C-g>R :call FastBoundaryGrep(VisualText())<CR>
 
 " lsc
 let g:lsc_server_commands = {'javascript': '/home/raoni/opt/javascript-typescript-langserver/lib/language-server-stdio.js'}
