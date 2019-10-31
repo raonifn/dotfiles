@@ -8,7 +8,6 @@ set wildmenu
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'Vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kamykn/skyhawk'
@@ -26,6 +25,9 @@ Plugin 'neomake/neomake'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'racer-rust/vim-racer'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on
@@ -198,4 +200,13 @@ endfunction
 " lsc
 let g:lsc_server_commands = {'javascript': '/home/raoni/opt/javascript-typescript-langserver/lib/language-server-stdio.js'}
 let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_server_commands = {'go': {'command': 'gopls serve','log_level': -1, }}
 let g:lsc_auto_map = v:true
+
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gvk
