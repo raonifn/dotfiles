@@ -5,7 +5,7 @@ set path+=**
 set wildmenu
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'scrooloose/nerdtree'
@@ -28,6 +28,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'mxw/vim-jsx'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()
 filetype plugin indent on
@@ -203,6 +205,8 @@ let g:lsc_server_commands = {'dart': 'dart_language_server'}
 let g:lsc_server_commands = {'go': {'command': 'gopls serve','log_level': -1, }}
 let g:lsc_auto_map = v:true
 
+" use <c-space>for trigger completion
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
