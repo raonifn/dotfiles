@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=$(dirname $0)
-cd $dir
+cd $dir/..
 fdir=$(pwd)
 cd -
 
@@ -14,6 +14,6 @@ for file in $(find $fdir -type f -name '*.symlink'); do
     continue
   fi
   echo "Creating symlink for $file"
-  echo ln -s $file $target
+  ln -s $file $target
 done
 
