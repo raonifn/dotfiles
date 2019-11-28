@@ -30,5 +30,11 @@ bind -r L resize-pane -R 10
 # enable mouse support for switching panes/windows
 setw -g mouse on
 
+# Enable vim mode on selection
+set-window-option -g mode-keys vi
+
+# Clipboard - Depends on xclip
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -f | xclip -sel clip"
+
 # set vi mode for copy mode
 # setw -g mode-keys vi
