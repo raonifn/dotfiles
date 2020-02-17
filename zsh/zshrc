@@ -1,5 +1,16 @@
+export ZSH="/home/raoni/.oh-my-zsh"
+
+ZSH_THEME="raoni"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:$HOME/bin:$HOME/go/bin
-alias weather="curl wttr.in/campinas"
+
+alias weather_campinas="curl wttr.in/campinas"
+alias weather="curl wttr.in/florianopolis"
+alias xcc="xclip -sel clip"
+
 export EDITOR=vim
+bindkey \^u backward-kill-line
