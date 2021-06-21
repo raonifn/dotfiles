@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 dir=$(dirname $0)
 cd $dir/..
 fdir=$(pwd)
 cd -
 
+# fdir=$dir
 echo "Symlinks"
 echo "=============================="
 for file in $(find $fdir -type f -name '*.symlink'); do

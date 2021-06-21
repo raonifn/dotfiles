@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/bash -e
 
 dir=$(dirname $0)
 
-source $dir/install/links.sh
+$dir/install/01-links.sh
+$dir/install/02-vim.sh
 
-source $dir/install/zsh-theme.sh
+# $dir/install/zsh-theme.sh
