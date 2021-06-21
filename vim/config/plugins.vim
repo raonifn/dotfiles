@@ -1,59 +1,55 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " Themes
-" Plugin 'kamykn/skyhawk'
-" Plugin 'morhetz/gruvbox'
-" Plugin 'tomasr/molokai'
-Plugin 'exitface/synthwave.vim'
-Plugin 'junegunn/seoul256.vim'
+" Plug 'kamykn/skyhawk'
+" Plug 'morhetz/gruvbox'
+" Plug 'tomasr/molokai'
+Plug 'exitface/synthwave.vim'
+Plug 'junegunn/seoul256.vim'
 
 " IDE
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'vim-airline/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'benmills/vimux'
-" Plugin 'neomake/neomake'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'benmills/vimux'
+" Plug 'neomake/neomake'
 
 " Dev Tools
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'w0rp/ale'
-Plugin 'janko-m/vim-test'
-Plugin 'sebdah/vim-delve'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'junkblocker/patchreview-vim'
-" Plugin 'codegram/vim-codereview'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
+Plug 'janko-m/vim-test'
+Plug 'sebdah/vim-delve'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" Plug 'vim-syntastic/syntastic'
+" Plug 'junkblocker/patchreview-vim'
+" Plug 'codegram/vim-codereview'
 
 " intellisense engine
-Plugin 'neoclide/coc.nvim'
-Plugin 'natebosch/vim-lsc'
-Plugin 'tpope/vim-markdown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'natebosch/vim-lsc'
 
 " Dev Langs support
-" Plugin 'mxw/vim-jsx'
-" Plugin 'posva/vim-vue'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'fatih/vim-go'
-Plugin 'racer-rust/vim-racer'
-" Plugin 'udalov/kotlin-vim'
+" Plug 'mxw/vim-jsx'
+" Plug 'posva/vim-vue'
+" Plug 'pangloss/vim-javascript'
+" Plug 'dart-lang/dart-vim-plugin'
+Plug 'tpope/vim-markdown'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'racer-rust/vim-racer'
+" Plug 'udalov/kotlin-vim'
 
 " Presentations
-Plugin 'sotte/presenting.vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'sotte/presenting.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'junegunn/limelight.vim'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 
