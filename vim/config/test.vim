@@ -16,12 +16,3 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-" Delve Debugger
-let g:delve_use_vimux=1
-nmap <silent> t<C-n> :TestNearest<CR>
-function! DebugNearest()
-  let g:test#go#runner = 'delve'
-  TestNearest
-  unlet g:test#go#runner
-endfunction
-
