@@ -13,6 +13,15 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>n  <Plug>(go-rename)
 
+" Delve Debugger
+let g:delve_use_vimux=1
+nmap <silent> t<C-n> :TestNearest<CR>
+function! DebugNearest()
+  let g:test#go#runner = 'delve'
+  TestNearest
+  unlet g:test#go#runner
+endfunction
+
 nmap <silent> t<C-d> :call DebugNearest()<CR>
 nmap <silent> t<C-b> :DlvToggleBreakpoint<CR>
 nmap <silent> t<C-t> :DlvToggleTracepoint<CR>
@@ -22,4 +31,3 @@ nmap <silent> t<C-p> :call VimuxRunCommand('p ' . expand('<cWORD>'))<CR>
 nmap <silent> t<C-l> :call VimuxRunCommand('locals')<CR>
 nmap <silent> t<C-v> :call VimuxRunCommand('vars')<CR>
 nmap <silent> t<C-x> :call VimuxRunCommand('exit')<CR>
-
