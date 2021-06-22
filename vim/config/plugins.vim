@@ -35,14 +35,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'natebosch/vim-lsc'
 
 " Dev Langs support
-" Plug 'mxw/vim-jsx'
-" Plug 'posva/vim-vue'
 " Plug 'pangloss/vim-javascript'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'tpope/vim-markdown'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'racer-rust/vim-racer'
-" Plug 'udalov/kotlin-vim'
 
 " Presentations
 Plug 'sotte/presenting.vim'
