@@ -21,7 +21,7 @@ Plug 'benmills/vimux'
 
 " Dev Tools
 Plug 'editorconfig/editorconfig-vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'janko-m/vim-test'
 Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-fugitive'
@@ -39,7 +39,7 @@ Plug 'natebosch/vim-lsc'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'tpope/vim-markdown'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'racer-rust/vim-racer'
+" Plug 'racer-rust/vim-racer'
 
 " Presentations
 Plug 'sotte/presenting.vim'
