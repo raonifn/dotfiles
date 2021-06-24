@@ -38,7 +38,7 @@ Plug 'natebosch/vim-lsc'
 " Plug 'pangloss/vim-javascript'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'tpope/vim-markdown'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 " Plug 'racer-rust/vim-racer'
 
 " Presentations
