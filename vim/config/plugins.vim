@@ -26,6 +26,8 @@ Plug 'janko-m/vim-test'
 Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall' }
 " Plug 'vim-syntastic/syntastic'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
