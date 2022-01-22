@@ -14,5 +14,5 @@ nmap <silent> t<C-g> :TestVisit<CR>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+nnoremap <leader>aa :cclose<CR>
 

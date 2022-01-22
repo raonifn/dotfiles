@@ -48,6 +48,11 @@ Plug 'sotte/presenting.vim'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
 
+" Arduino
+" Plug 'sudar/vim-arduino-syntax'
+Plug 'stevearc/vim-arduino'
+" Plug 'raonifn/vim-arduino'
+
 call plug#end()
 filetype plugin indent on
 
